@@ -1,14 +1,21 @@
 .main_content {
-  padding: 4rem;
+  padding: 64px;
+  cursor: default;
 }
 
 .node_table {
   width: 100%;
   display: flex;
+  height: 800px;
 }
 
 .node_table > div {
   border: 1px solid black;
+  padding: 10px;
+  overflow-y: scroll;
+  width: 33%;
+  display: flex;
+  flex-direction: column;
 }
 
 .status_circle {
@@ -17,19 +24,51 @@
   height: 20px;
 }
 
+.selectedRow {
+  background-color: lightgrey;
+}
+
+.copy_email {
+  color: #1e90ff; /* ярко-синий */
+  cursor: pointer;
+}
+
+.copy_email:hover {
+  color: #0b61d8;
+}
+
 .first_col {
+}
+
+.general_info {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.group_list {
   display: flex;
   flex-direction: column;
-  width: 33%;
+  gap: 10px;
+  padding: 10px;
+}
+
+.group_item {
+  cursor: pointer;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 32px;
+  border: 1px solid grey;
+  padding: 6px;
+}
+
+.group_item:hover {
+  background-color: lightgrey;
+  transition: ease-in-out 0.3s;
 }
 
 .second_col {
-  display: flex;
-  flex-direction: column;
-  width: 33%;
-  height: 500px;
-  padding: 10px;
-  overflow-y: scroll;
 }
 
 .second_col_title {
@@ -53,7 +92,7 @@
 
 .node_item:hover {
   background-color: lightgrey;
-  transition: ease-in-out 0.5s;
+  transition: ease-in-out 0.3s;
 }
 
 .node_characteristics span {
@@ -61,10 +100,6 @@
 }
 
 .third_col {
-  display: flex;
-  flex-direction: column;
-  width: 33%;
-  padding: 10px;
 }
 
 .node_info {

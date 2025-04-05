@@ -50,6 +50,11 @@ function App() {
     };
   }, [dispatch]);
 
+  const handleCopyEmail = (email: string) => {
+    navigator.clipboard.writeText(email);
+    alert("Email скопирован в буфер обмена");
+  };
+
   if (loading) return <div>Загрузка...</div>;
   if (error) return <div>Ошибка: {error}</div>;
 
@@ -89,12 +94,14 @@ function App() {
     <main className={styles.main_content}>
       <div className={styles.node_table}>
         <div className={styles.first_col}>
-          <div className="general_info">
-            <span>Всего узлов: {nodes.length}</span>
+          <div className={styles.general_info}>
+            <h3>Всего узлов: {nodes.length}</h3>
           </div>
           <ul className={styles.group_list}>
             <button
-              className={styles.group_item}
+              className={`${styles.group_item} ${
+                selectedGroupId === null ? styles.selectedRow : ""
+              }`}
               onClick={() => setSelectedGroupId(null)}
             >
               Показать все
@@ -102,7 +109,9 @@ function App() {
             {groups.map((group) => (
               <li key={group.id}>
                 <button
-                  className={styles.group_item}
+                  className={`${styles.group_item} ${
+                    selectedGroupId === group.id ? styles.selectedRow : ""
+                  }`}
                   onClick={() => setSelectedGroupId(group.id)}
                 >
                   {group.caption}
@@ -117,7 +126,9 @@ function App() {
             {filteredNodes.map((node) => (
               <li
                 key={node.id}
-                className={styles.node_item}
+                className={`${styles.node_item} ${
+                  selectedNodeId === node.id ? styles.selectedRow : ""
+                }`}
                 onClick={() => setSelectedNodeId(node.id)}
               >
                 <div
@@ -139,10 +150,17 @@ function App() {
             <div className={styles.node_info}>
               <h3>График метрик для {selectedNode.name}</h3>
               <Line data={getChartData(selectedNode.metrics)} />
-              <h3>
-                Админ:
-                {`${selectedNode.admin.name} ${selectedNode.admin.email}`}
-              </h3>
+              <div className={styles.admin_info}>
+                <h3>Админ:</h3>
+                <span>{selectedNode.admin.name}</span>{" "}
+                <span
+                  className={styles.copy_email}
+                  onClick={() => handleCopyEmail(selectedNode.admin.email)}
+                  title="Кликните, чтобы скопировать"
+                >
+                  {selectedNode.admin.email}
+                </span>
+              </div>
               <h3>Интерфейс:</h3>
               {selectedNode.interfaces.name ? (
                 <div className={styles.interface_info}>
