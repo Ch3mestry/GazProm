@@ -1,6 +1,7 @@
-import "./App.css";
+import styles from "./App.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchNodes } from "./store/slices/nodesSlice";
+import { fetchGroups } from "./store/slices/groupsSlice";
 import { RootState, AppDispatch } from "./store/index";
 import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
@@ -30,16 +31,35 @@ function App() {
   const { nodes, loading, error } = useSelector(
     (state: RootState) => state.nodes
   );
+  const { groups } = useSelector((state: RootState) => state.groups);
   const [selectedNodeId, setSelectedNodeId] = useState<number | null>(null);
+  const [selectedGroupId, setSelectedGroupId] = useState<number | null>(null);
 
   useEffect(() => {
-    dispatch(fetchNodes());
+    const fetchData = () => {
+      dispatch(fetchNodes());
+      dispatch(fetchGroups());
+    };
+
+    fetchData();
+
+    const interval = setInterval(fetchData, 60000);
+
+    return () => {
+      clearInterval(interval);
+    };
   }, [dispatch]);
 
   if (loading) return <div>Загрузка...</div>;
   if (error) return <div>Ошибка: {error}</div>;
 
   const selectedNode = nodes.find((node) => node.id === selectedNodeId);
+  const filteredNodes =
+    selectedGroupId !== null
+      ? nodes.filter((node) =>
+          node.groups.some((group) => group.id === selectedGroupId)
+        )
+      : nodes;
 
   const getChartData = (metrics: any[]) => ({
     labels: metrics.map((m) => m.datetime),
@@ -66,60 +86,95 @@ function App() {
   });
 
   return (
-    <div className="table" style={{ display: "flex", gap: "40px" }}>
-      <div className="first_block"></div>
-      <div className="second_block">
-        <h2>Список узлов:</h2>
-        <ul style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
-          {nodes.map((node) => (
-            <li
-              key={node.id}
-              style={{ display: "flex", gap: "40px", alignItems: "center" }}
-              onClick={() => setSelectedNodeId(node.id)}
-            >
-              <div
-                style={{
-                  borderRadius: "50%",
-                  width: "20px",
-                  height: "20px",
-                  backgroundColor: node.status.color,
-                }}
-              ></div>
-              <p> {node.name}</p>
-              <div>
-                <p>{node.last_metrics.cpu}</p>
-                <p>{node.last_metrics.memory}</p>
-                <p>{node.last_metrics.disk}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="third_block">
-        {selectedNode && (
-          <div style={{ marginTop: "40px", width: "500px", height: "500px" }}>
-            <h3>График метрик для {selectedNode.name}</h3>
-            <Line data={getChartData(selectedNode.metrics)} />
-            <h3>
-              Админ: {`${selectedNode.admin.name} ${selectedNode.admin.email}`}
-            </h3>
-            <h3>Интерфейсы:</h3>
-            <ul>
-              {selectedNode.interfaces &&
-                selectedNode.interfaces.map((interfaceItem) => (
-                  <li key={interfaceItem.id}>{interfaceItem.name}</li>
-                ))}
-            </ul>
-            <h3>Приложения:</h3>
-            <ul>
-              {selectedNode.applications.map((application) => (
-                <li key={application.id}>{application.name}</li>
-              ))}
-            </ul>
+    <main className={styles.main_content}>
+      <div className={styles.node_table}>
+        <div className={styles.first_col}>
+          <div className="general_info">
+            <span>Всего узлов: {nodes.length}</span>
           </div>
-        )}
+          <ul className={styles.group_list}>
+            <button
+              className={styles.group_item}
+              onClick={() => setSelectedGroupId(null)}
+            >
+              Показать все
+            </button>
+            {groups.map((group) => (
+              <li key={group.id}>
+                <button
+                  className={styles.group_item}
+                  onClick={() => setSelectedGroupId(group.id)}
+                >
+                  {group.caption}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className={styles.second_col}>
+          <h2 className={styles.second_col_title}>Список узлов:</h2>
+          <ul className={styles.node_list}>
+            {filteredNodes.map((node) => (
+              <li
+                key={node.id}
+                className={styles.node_item}
+                onClick={() => setSelectedNodeId(node.id)}
+              >
+                <div
+                  className={styles.status_circle}
+                  style={{ backgroundColor: node.status.color }}
+                ></div>
+                <p> {node.name}</p>
+                <div className={styles.node_characteristics}>
+                  <span>cpu: {node.last_metrics.cpu}</span>
+                  <span>mem: {node.last_metrics.memory}</span>
+                  <span>disk: {node.last_metrics.disk}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className={styles.third_col}>
+          {selectedNode && (
+            <div className={styles.node_info}>
+              <h3>График метрик для {selectedNode.name}</h3>
+              <Line data={getChartData(selectedNode.metrics)} />
+              <h3>
+                Админ:
+                {`${selectedNode.admin.name} ${selectedNode.admin.email}`}
+              </h3>
+              <h3>Интерфейс:</h3>
+              {selectedNode.interfaces.name ? (
+                <div className={styles.interface_info}>
+                  <div
+                    className={styles.status_circle}
+                    style={{ backgroundColor: selectedNode.status.color }}
+                  ></div>
+                  <span>{selectedNode.interfaces.name}</span>
+                </div>
+              ) : (
+                <span>Интерфейс не определен</span>
+              )}
+              <h3>Приложения:</h3>
+              <ul className={styles.node_applications}>
+                {selectedNode.applications.length > 0 ? (
+                  selectedNode.applications.map((application) => (
+                    <li
+                      className={styles.node_application}
+                      key={application.id}
+                    >
+                      {application.name}
+                    </li>
+                  ))
+                ) : (
+                  <span>Запущенных приложений не обнаружено</span>
+                )}
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </main>
   );
 }
 

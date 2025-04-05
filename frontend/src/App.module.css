@@ -1,0 +1,80 @@
+.main_content {
+  padding: 4rem;
+}
+
+.node_table {
+  width: 100%;
+  display: flex;
+}
+
+.node_table > div {
+  border: 1px solid black;
+}
+
+.status_circle {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+
+.first_col {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+}
+
+.second_col {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  height: 500px;
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+.second_col_title {
+  text-align: center;
+}
+
+.node_list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.node_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid grey;
+  cursor: pointer;
+}
+
+.node_item:hover {
+  background-color: lightgrey;
+  transition: ease-in-out 0.5s;
+}
+
+.node_characteristics span {
+  display: block;
+}
+
+.third_col {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  padding: 10px;
+}
+
+.node_info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.interface_info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

@@ -1,11 +1,56 @@
-// nodesSlice.ts
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export interface Node {
+interface Metric {
+  datetime: string;
+  cpu: number;
+  memory: number;
+  disk: number;
+}
+
+interface LastMetric {
+  datetime: string;
+  cpu: number;
+  memory: number;
+  disk: number;
+}
+
+interface Interface {
+  id: number | null;
+  name: string | null;
+  status: string | null;
+  status_description: string | null;
+}
+
+interface Group {
   id: number;
   name: string;
-  // Добавь другие поля по твоей структуре
+}
+
+interface Application {
+  id: number;
+  name: string;
+}
+
+interface Admin {
+  id: number;
+  name: string;
+  email: string;
+}
+
+interface Node {
+  id: number;
+  name: string;
+  status: {
+    color: string;
+    description: string;
+  };
+  groups: Group[];
+  applications: Application[];
+  interfaces: Interface;
+  admin: Admin;
+  metrics: Metric[];
+  last_metrics: LastMetric | null;
 }
 
 interface NodesState {

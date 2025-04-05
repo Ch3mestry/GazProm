@@ -5,7 +5,12 @@
     "status": { "color": "lightgreen", "description": "UP" },
     "groups": [{ "id": 1, "name": "Санкт-Петербург" }],
     "applications": [{ "id": 1, "name": "Nginx" }],
-    "interfaces": [],
+    "interfaces": {
+      "id": null,
+      "name": null,
+      "status": null,
+      "status_description": null
+    },
     "admin": { "id": 1, "name": "Богданов Денис", "email": "Bogdanov@mail.ru" },
     "metrics": [
       { "datetime": "01-03-2020 00:00", "cpu": 60, "memory": 80, "disk": 65 },
@@ -33,14 +38,12 @@
     "status": { "color": "lightgreen", "description": "UP" },
     "groups": [{ "id": 1, "name": "Санкт-Петербург" }],
     "applications": [{ "id": 5, "name": "MS SQL" }],
-    "interfaces": [
-      {
-        "id": 2,
-        "name": "eth0",
-        "status": "lightgreen",
-        "status_description": "UP"
-      }
-    ],
+    "interfaces": {
+      "id": 2,
+      "name": "eth0",
+      "status": "lightgreen",
+      "status_description": "UP"
+    },
     "admin": {
       "id": 2,
       "name": "Савельев Кирилл",
@@ -72,14 +75,12 @@
     "status": { "color": "red", "description": "CRITICAL" },
     "groups": [{ "id": 1, "name": "Санкт-Петербург" }],
     "applications": [{ "id": 7, "name": "Python" }],
-    "interfaces": [
-      {
-        "id": 3,
-        "name": "eth0",
-        "status": "lightgreen",
-        "status_description": "UP"
-      }
-    ],
+    "interfaces": {
+      "id": 3,
+      "name": "eth0",
+      "status": "lightgreen",
+      "status_description": "UP"
+    },
     "admin": {
       "id": 3,
       "name": "Абрамов Станислав",
@@ -111,14 +112,12 @@
     "status": { "color": "lightgreen", "description": "UP" },
     "groups": [{ "id": 1, "name": "Санкт-Петербург" }],
     "applications": [{ "id": 8, "name": "NodeJS" }],
-    "interfaces": [
-      {
-        "id": 4,
-        "name": "eth0",
-        "status": "lightgreen",
-        "status_description": "UP"
-      }
-    ],
+    "interfaces": {
+      "id": 4,
+      "name": "eth0",
+      "status": "lightgreen",
+      "status_description": "UP"
+    },
     "admin": {
       "id": 3,
       "name": "Абрамов Станислав",
@@ -150,14 +149,12 @@
     "status": { "color": "darkred", "description": "DOWN" },
     "groups": [{ "id": 2, "name": "Москва" }],
     "applications": [{ "id": 2, "name": "IIS" }],
-    "interfaces": [
-      {
-        "id": 5,
-        "name": "eth0",
-        "status": "lightgreen",
-        "status_description": "UP"
-      }
-    ],
+    "interfaces": {
+      "id": 5,
+      "name": "eth0",
+      "status": "lightgreen",
+      "status_description": "UP"
+    },
     "admin": { "id": 4, "name": "Пуртов Станислав", "email": "Purtov@mail.ru" },
     "metrics": [
       { "datetime": "01-03-2020 00:00", "cpu": 55, "memory": 76, "disk": 65 },
@@ -185,14 +182,12 @@
     "status": { "color": "yellow", "description": "WARNING" },
     "groups": [{ "id": 2, "name": "Москва" }],
     "applications": [{ "id": 5, "name": "MS SQL" }],
-    "interfaces": [
-      {
-        "id": 6,
-        "name": "eth0",
-        "status": "lightgreen",
-        "status_description": "UP"
-      }
-    ],
+    "interfaces": {
+      "id": 6,
+      "name": "eth0",
+      "status": "lightgreen",
+      "status_description": "UP"
+    },
     "admin": { "id": 5, "name": "Петров Сергей", "email": "Petrov@mail.ru" },
     "metrics": [
       { "datetime": "01-03-2020 00:00", "cpu": 34, "memory": 76, "disk": 65 },
@@ -220,14 +215,12 @@
     "status": { "color": "lightgreen", "description": "UP" },
     "groups": [{ "id": 2, "name": "Москва" }],
     "applications": [{ "id": 8, "name": "NodeJS" }],
-    "interfaces": [
-      {
-        "id": 7,
-        "name": "eth0",
-        "status": "lightgreen",
-        "status_description": "UP"
-      }
-    ],
+    "interfaces": {
+      "id": 7,
+      "name": "eth0",
+      "status": "lightgreen",
+      "status_description": "UP"
+    },
     "admin": { "id": 6, "name": "Сергеев Олег", "email": "Sergeev@mail.ru" },
     "metrics": [
       { "datetime": "01-03-2020 00:00", "cpu": 98, "memory": 90, "disk": 65 },
@@ -255,14 +248,12 @@
     "status": { "color": "lightgreen", "description": "UP" },
     "groups": [{ "id": 2, "name": "Москва" }],
     "applications": [{ "id": 7, "name": "Python" }],
-    "interfaces": [
-      {
-        "id": 8,
-        "name": "eth0",
-        "status": "lightgreen",
-        "status_description": "UP"
-      }
-    ],
+    "interfaces": {
+      "id": 8,
+      "name": "eth0",
+      "status": "lightgreen",
+      "status_description": "UP"
+    },
     "admin": { "id": 6, "name": "Сергеев Олег", "email": "Sergeev@mail.ru" },
     "metrics": [
       { "datetime": "01-03-2020 00:00", "cpu": 99, "memory": 99, "disk": 65 },
@@ -290,14 +281,12 @@
     "status": { "color": "darkred", "description": "DOWN" },
     "groups": [{ "id": 3, "name": "Новосибирск" }],
     "applications": [{ "id": 1, "name": "Nginx" }],
-    "interfaces": [
-      {
-        "id": 9,
-        "name": "eth0",
-        "status": "lightgreen",
-        "status_description": "UP"
-      }
-    ],
+    "interfaces": {
+      "id": 9,
+      "name": "eth0",
+      "status": "lightgreen",
+      "status_description": "UP"
+    },
     "admin": {
       "id": 7,
       "name": "Васильев Василий",
@@ -329,14 +318,12 @@
     "status": { "color": "lightgreen", "description": "UP" },
     "groups": [{ "id": 3, "name": "Новосибирск" }],
     "applications": [{ "id": 4, "name": "PostgreSQL" }],
-    "interfaces": [
-      {
-        "id": 10,
-        "name": "eth0",
-        "status": "lightgreen",
-        "status_description": "UP"
-      }
-    ],
+    "interfaces": {
+      "id": 10,
+      "name": "eth0",
+      "status": "lightgreen",
+      "status_description": "UP"
+    },
     "admin": { "id": 8, "name": "Королев Иван", "email": "Korolev@mail.ru" },
     "metrics": [
       { "datetime": "01-03-2020 00:00", "cpu": 100, "memory": 98, "disk": 65 },
@@ -364,14 +351,12 @@
     "status": { "color": "lightgreen", "description": "UP" },
     "groups": [{ "id": 3, "name": "Новосибирск" }],
     "applications": [{ "id": 8, "name": "NodeJS" }],
-    "interfaces": [
-      {
-        "id": 11,
-        "name": "eth1",
-        "status": "darkred",
-        "status_description": "DOWN"
-      }
-    ],
+    "interfaces": {
+      "id": 11,
+      "name": "eth1",
+      "status": "darkred",
+      "status_description": "DOWN"
+    },
     "admin": {
       "id": 9,
       "name": "Соловьев Дмитрий",
@@ -403,14 +388,12 @@
     "status": { "color": "yellow", "description": "WARNING" },
     "groups": [{ "id": 3, "name": "Новосибирск" }],
     "applications": [{ "id": 12, "name": "Go" }],
-    "interfaces": [
-      {
-        "id": 12,
-        "name": "eth1",
-        "status": "lightgreen",
-        "status_description": "UP"
-      }
-    ],
+    "interfaces": {
+      "id": 12,
+      "name": "eth1",
+      "status": "lightgreen",
+      "status_description": "UP"
+    },
     "admin": {
       "id": 9,
       "name": "Соловьев Дмитрий",
@@ -442,14 +425,12 @@
     "status": { "color": "lightgreen", "description": "UP" },
     "groups": [{ "id": 4, "name": "Красноярск" }],
     "applications": [{ "id": 3, "name": "Apache" }],
-    "interfaces": [
-      {
-        "id": 13,
-        "name": "enp0s3",
-        "status": "lightgreen",
-        "status_description": "UP"
-      }
-    ],
+    "interfaces": {
+      "id": 13,
+      "name": "enp0s3",
+      "status": "lightgreen",
+      "status_description": "UP"
+    },
     "admin": {
       "id": 10,
       "name": "Григорьев Александр",
@@ -481,14 +462,12 @@
     "status": { "color": "red", "description": "CRITICAL" },
     "groups": [{ "id": 4, "name": "Красноярск" }],
     "applications": [{ "id": 5, "name": "MS SQL" }],
-    "interfaces": [
-      {
-        "id": 14,
-        "name": "enp0s3",
-        "status": "darkred",
-        "status_description": "DOWN"
-      }
-    ],
+    "interfaces": {
+      "id": 14,
+      "name": "enp0s3",
+      "status": "darkred",
+      "status_description": "DOWN"
+    },
     "admin": {
       "id": 11,
       "name": "Афанасьев Михаил",
@@ -520,14 +499,12 @@
     "status": { "color": "grey", "description": "SHUTDOWN" },
     "groups": [{ "id": 4, "name": "Красноярск" }],
     "applications": [{ "id": 11, "name": "1С:Предприятие" }],
-    "interfaces": [
-      {
-        "id": 15,
-        "name": "eth0",
-        "status": "darkred",
-        "status_description": "DOWN"
-      }
-    ],
+    "interfaces": {
+      "id": 15,
+      "name": "eth0",
+      "status": "darkred",
+      "status_description": "DOWN"
+    },
     "admin": {
       "id": 12,
       "name": "Довлатов Сергей",
@@ -559,14 +536,12 @@
     "status": { "color": "grey", "description": "SHUTDOWN" },
     "groups": [{ "id": 4, "name": "Красноярск" }],
     "applications": [{ "id": 12, "name": "Go" }],
-    "interfaces": [
-      {
-        "id": 16,
-        "name": "eth0",
-        "status": "darkred",
-        "status_description": "DOWN"
-      }
-    ],
+    "interfaces": {
+      "id": 16,
+      "name": "eth0",
+      "status": "darkred",
+      "status_description": "DOWN"
+    },
     "admin": {
       "id": 12,
       "name": "Довлатов Сергей",

@@ -67,6 +67,8 @@ router.get("/nodes", (req, res) => {
         const metrics = safeParse(node.metrics);
         const lastMetric = metrics[metrics.length - 1] || null;
 
+        const interfacesObj = safeParse(node.interfaces, {});
+
         return {
           id: node.id,
           name: node.name,
@@ -76,7 +78,7 @@ router.get("/nodes", (req, res) => {
           },
           groups: safeParse(node.groups),
           applications: safeParse(node.applications),
-          interfaces: safeParse(node.interfaces).filter((i) => i.id !== null), // Фильтрация null интерфейсов
+          interfaces: interfacesObj,
           admin: node.admin ? safeParse(node.admin, null) : null,
           metrics: metrics,
           last_metrics: lastMetric
